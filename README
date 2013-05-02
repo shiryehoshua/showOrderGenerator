@@ -1,0 +1,66 @@
+Shir Yehoshua 5/1/13
+
+This generates a random show order based on the given constraints 
+in the file: 
+  - No two acts that have the same participants will follow after
+    each other
+  - Given a time it takes to prepare for an act, and the length
+    of each act, every participant will be given enough time to
+    prepare for their act
+
+Note: That if there is not order that works, this will just loop
+forever.
+
+To run:
+$ python showOrderGenerator.py actData.txt
+
+The act data file should be of the form:
+
+TITLE2 duration preptime
+participant1
+participant2
+participant3
+...
+
+TITLE2 duration preptime
+participant1
+participant2
+participant3
+...
+
+etc.
+
+Note: The title of the act cannot more than one word, and the
+duration and preptime should be integers (presumably, number
+of minutes).
+
+The output will end with a show order. Since this is a lazy
+algorithm, it will keep trying to generate show orders until
+it finds one that works. So something like the following should
+be expected:
+
+TITLE2
+TITLE6
+TITLE5
+TITLE3
+RESTARTING...
+
+TITLE3
+TITLE5
+RESTARTING...
+
+TITLE1
+TITLE2
+TITLE3
+TITLE4
+TITLE5
+TITLE6
+
+And so the generated show order is:
+TITLE1
+TITLE2
+TITLE3
+TITLE4
+TITLE5
+TITLE6
+
